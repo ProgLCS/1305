@@ -12,8 +12,13 @@ app.post('/comprar', (req,res)=>{
     const quant= req.body.quant;
     const preco= req.body.preco;
     const total= preco * quant;
-    res.send('O produto que você deseja é '+ produto+' e o valor total é de '+ total)
-               
+
+    if (!produto || valor<0 ){
+        res.send("Produto com informação incompleta")
+
+    }else{
+        res.send('O produto que você deseja é: '+ produto+' \n E o valor total é de:' + total)
+    }
 })
 
 app.listen (3000, () =>{
